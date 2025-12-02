@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+console.log(OrbitControls)
 
 // initialize the scene
 const scene = new THREE.Scene()
@@ -18,7 +21,7 @@ const camera = new THREE.PerspectiveCamera(
   75, 
   window.innerWidth / window.innerHeight,
   0.1,
-  30)
+  200)
 camera.position.z = 5
 
 // initialize the renderer
@@ -26,5 +29,11 @@ const canvas = document.querySelector('canvas.threejs')
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas
 })
+
+
+//instantiate the controls
+const controls = new OrbitControls(camera, canvas)
+
+
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.render(scene, camera)
